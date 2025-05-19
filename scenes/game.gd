@@ -8,6 +8,10 @@ func _ready() -> void:
 	pass
 	
 func _process(delta: float) -> void:
+	interactive_camera(delta)
+
+func interactive_camera(delta: float) -> void:
+	return
 	$Camera2D.global_position = $Player.global_position + Vector2(0, -250)
 	var drag_horizontal_offset = (get_global_mouse_position().x - 1920) / (1920/1.5)
 	var drag_vertical_offset = (get_global_mouse_position().y - 1080) / (1080/1.5)

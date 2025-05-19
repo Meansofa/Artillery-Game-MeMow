@@ -1,20 +1,21 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1747673153
-default_env.tres::Environment::-1::1747673067::0::1::::<><><>0<>0<><>::
+::res://::1747674287
+car-967470_1280.png::CompressedTexture2D::7750846397486727950::1747674288::1747674290::1::::<><><>0<>0<>3865740c69f20b6349bcab98e67e3beb<>res://.godot/imported/car-967470_1280.png-0215ad2c1b71e39299690fac94154837.ctex::
+default_env.tres::Environment::546709799608863236::1747674220::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile::-1::1747672964::0::1::::<><><>0<>0<><>::
 icon.png::CompressedTexture2D::2385171621265264404::1747672964::1747673155::1::::<><><>0<>0<>deced74cd3b25eb2be565cef950a7b92<>res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex::
 screenshot - Edited.png::CompressedTexture2D::1726051332227613278::1747044955::1747673156::1::::<><><>0<>0<>3eeba640d1e066cd29ce8addc2cba764<>res://.godot/imported/screenshot - Edited.png-02b2c19c126188a0311107fbd67e0683.ctex::
-texture_overlay.gdshader::Shader::6883507868966647415::1747673067::0::1::::<><><>0<>0<><>::
-::res://scenes/::1747673009
+texture_overlay.gdshader::Shader::6883507868966647415::1747673941::0::1::::<><><>0<>0<><>::
+::res://scenes/::1747673941
 bullet.gd::GDScript::4755708042748008913::1747673067::0::1::::<>Node2D<><>0<>0<><>::
 bullet.tscn::PackedScene::-1::1747673067::0::1::::<><><>0<>0<><>::res://scenes/bullet.gd
 explosionParticles.gd::GDScript::8011608096856564235::1747673067::0::1::::<>GPUParticles2D<><>0<>0<><>::
 explosionParticles.tscn::PackedScene::-1::1747673067::0::1::::<><><>0<>0<><>::res://scenes/explosionParticles.gd
-game.gd::GDScript::2283100947922477961::1747673067::0::1::::<>Node2D<><>0<>0<><>::
-game.tscn::PackedScene::-1::1747673067::0::1::::<><><>0<>0<><>::res://scenes/terrain.tscn<>res://scenes/player.tscn<>res://scenes/game.gd<>res://scenes/worm.tscn
+game.gd::GDScript::2283100947922477961::1747673266::0::1::::<>Node2D<><>0<>0<><>::
+game.tscn::PackedScene::4713424475793293960::1747673449::0::1::::<><><>0<>0<><>::uid://dtbgg7lgdjsqx::::res://scenes/terrain.tscn<>res://scenes/player.tscn<>uid://7r7lr65160th::::res://scenes/game.gd<>res://scenes/worm.tscn
 player.gd::GDScript::1790164850336642749::1747673067::0::1::::<>RigidBody2D<><>0<>0<><>::
 player.tscn::PackedScene::-1::1747673067::0::1::::<><><>0<>0<><>::res://scenes/player.gd
-terrain.gd::GDScript::8055562112018575516::1747673067::0::1::::<>Node2D<><>0<>0<><>::
-terrain.tscn::PackedScene::-1::1747673067::0::1::::<><><>0<>0<><>::res://scenes/terrain.gd
+terrain.gd::GDScript::8055562112018575516::1747673819::0::1::::<>Node2D<><>0<>0<><>::
+terrain.tscn::PackedScene::8495291172693056247::1747673941::0::1::::<><><>0<>0<><>::uid://dm1f6wkddj0gu::::res://scenes/terrain.gd<>uid://c5comspudrjcx::::res://texture_overlay.gdshader<>uid://yud2weqaaspy::::res://screenshot - Edited.png
 worm.gd::GDScript::5173902822027088772::1747673067::0::1::::<>RigidBody2D<><>0<>0<><>::
 worm.tscn::PackedScene::-1::1747673067::0::1::::<><><>0<>0<><>::res://scenes/worm.gd
