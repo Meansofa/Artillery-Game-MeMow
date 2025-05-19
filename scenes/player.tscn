@@ -1,43 +1,82 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://co71jpbjan0j1"]
 
-[ext_resource path="res://scenes/player.gd" type="Script" id=1]
+[sub_resource type="GDScript" id="GDScript_u8vuu"]
+script/source = "extends RigidBody2D
 
-[node name="Player" type="RigidBody2D" groups=[
-"Player",
-]]
+@export var bullet: PackedScene = preload(\"res://scenes/bullet.tscn\")
+
+var gravity := 400.0
+var speed := 1500.0
+var velocity := Vector2.ZERO
+var bullet_velocity := 600.0
+var jump_force := 300.0
+
+func _ready() -> void:
+	pass
+	
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if !event.is_pressed(): return
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			bullet_velocity += 20
+			bullet_velocity = clamp(bullet_velocity, 100, 1500)
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			bullet_velocity -= 20
+			bullet_velocity = clamp(bullet_velocity, 100, 1500)
+
+func _process(delta: float) -> void:
+	$RotPoint.look_at(get_global_mouse_position())
+	
+	if Input.is_action_just_pressed(\"shoot\"):
+		var b = bullet.instantiate()
+		get_parent().add_child(b)
+		b.transform = $RotPoint/ShootPoint.global_transform
+		b.velocity = b.transform.x * bullet_velocity
+		b.gravity = gravity
+	
+func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed(\"left\"):
+		apply_central_impulse(-global_transform.x * speed * delta)
+	elif Input.is_action_pressed(\"right\"):
+		apply_central_impulse(global_transform.x * speed * delta)
+	elif Input.is_action_just_pressed(\"jump\"):
+		apply_central_impulse(Vector2.UP * jump_force)
+"
+
+[node name="Player" type="RigidBody2D" groups=["Player"]]
 gravity_scale = 4.0
-continuous_cd = 2
 can_sleep = false
+continuous_cd = 2
 linear_damp = 4.0
 angular_damp = 1.0
-script = ExtResource( 1 )
+script = SubResource("GDScript_u8vuu")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2( 0, -16 )
-color = Color( 0.2, 0.627451, 0.709804, 1 )
+position = Vector2(0, -16)
+color = Color(0.2, 0.627451, 0.709804, 1)
 antialiased = true
-polygon = PackedVector2Array( -16, -16, -16, 16, 16, 16, 16, -16 )
+polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
 
 [node name="Polygon2D2" type="Polygon2D" parent="."]
-position = Vector2( 0, -16 )
-color = Color( 0.101961, 0.101961, 0.101961, 1 )
+position = Vector2(0, -16)
+color = Color(0.101961, 0.101961, 0.101961, 1)
 antialiased = true
-polygon = PackedVector2Array( -22, 16, -22, 18, -21, 20, -19, 22, -16, 23, 16, 23, 19, 22, 21, 20, 22, 18, 22, 16, 21, 11, 16, 9, -16, 9, -21, 11 )
+polygon = PackedVector2Array(-22, 16, -22, 18, -21, 20, -19, 22, -16, 23, 16, 23, 19, 22, 21, 20, 22, 18, 22, 16, 21, 11, 16, 9, -16, 9, -21, 11)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( 0, -16 )
-polygon = PackedVector2Array( -16, 23, 16, 23, 19, 22, 21, 20, 22, 18, 22, 16, 21, 11, 16, 9, 16, -16, -16, -16, -16, 9, -21, 11, -22, 16, -22, 18, -21, 20, -19, 22 )
+position = Vector2(0, -16)
+polygon = PackedVector2Array(-16, 23, 16, 23, 19, 22, 21, 20, 22, 18, 22, 16, 21, 11, 16, 9, 16, -16, -16, -16, -16, 9, -21, 11, -22, 16, -22, 18, -21, 20, -19, 22)
 
 [node name="RotPoint" type="Marker2D" parent="."]
-position = Vector2( 0, -16 )
+position = Vector2(0, -16)
 
 [node name="Canon" type="Polygon2D" parent="RotPoint"]
-color = Color( 0.101961, 0.101961, 0.101961, 1 )
+color = Color(0.101961, 0.101961, 0.101961, 1)
 antialiased = true
-polygon = PackedVector2Array( 2, -7, -1, -5, -3, 0, -1, 5, 2, 7, 24, 7, 28, 9, 32, 9, 32, -9, 28, -9, 24, -7 )
+polygon = PackedVector2Array(2, -7, -1, -5, -3, 0, -1, 5, 2, 7, 24, 7, 28, 9, 32, 9, 32, -9, 28, -9, 24, -7)
 
 [node name="ShootPoint" type="Marker2D" parent="RotPoint"]
-position = Vector2( 33, 0 )
+position = Vector2(33, 0)
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 0, -7 )
+position = Vector2(0, -7)

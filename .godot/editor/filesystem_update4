@@ -3,3 +3,4 @@ res://scenes/terrain.tscn
 res://texture_overlay.gdshader
 res://scenes/game.tscn
 res://scenes/game.gd
+res://scenes/player.tscn
