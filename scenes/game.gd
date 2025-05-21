@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 	update_trajectory(delta)
 	
 func update_trajectory(delta):
+
 	line.clear_points()
 	var pos = $Player/RotPoint/ShootPoint.global_position
 	var vel = $Player/RotPoint/ShootPoint.global_transform.x * $Player.bullet_velocity
@@ -30,5 +31,5 @@ func update_trajectory(delta):
 		line.add_point(pos)
 		vel.y += $Player.gravity * delta
 		pos += vel * delta
-		if Geometry2D.is_point_in_polygon($Terrain/Polygon2D.to_local(pos), $Terrain/Polygon2D.polygon):
+		if Geometry2D.is_point_in_polygon($Terrain/Destructible/Polygon2D.to_local(pos), $Terrain/Destructible/Polygon2D.polygon):
 			break

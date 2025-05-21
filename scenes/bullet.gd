@@ -1,7 +1,11 @@
+@tool
 extends Node2D
 
 @export var particles: PackedScene = preload("res://scenes/explosionParticles.tscn")
-@export var radius = 100.0
+@export var radius := 100 :
+	set(value):
+		radius = value
+		_explosion_radius(radius)
 @export var explosion_force = 350.0
 
 var velocity := Vector2.ZERO
@@ -13,18 +17,23 @@ var affected = []
 
 func _ready() -> void:
 	randomize()
+	
+
+func _explosion_radius(radius):
+	print(self.name, "Bullet Radius Initialized")
 	var nb_points = 32
 	var points = PackedVector2Array()
 	for i in range(nb_points+1):
 		var point = deg_to_rad(i * 360.0 / nb_points - 90)
 		points.push_back(Vector2.ZERO + Vector2(cos(point), sin(point)) * radius)
 	$Area2D/DestructionPolygon.polygon = points
-	
+
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
 	position += velocity * delta
 	rotation = velocity.angle()
-	
+
+#Currently unused
 func explode() -> void:
 	for x in affected:
 		x.apply_central_impulse((x.global_position - global_position).normalized() * explosion_force)
@@ -33,11 +42,15 @@ func explode() -> void:
 	get_parent().call_deferred("add_child", inst)
 	
 	if collider.is_in_group("Destructibles"):
-		collider.get_parent().clip($Area2D/DestructionPolygon)
+		collider.clip($Area2D/DestructionPolygon)
 	call_deferred("queue_free")
 	
 func _on_CollisionDetection_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"): return
+	if body.is_in_group("Destructibles"):
+		print(self.name, ">Destructible Body: ", body)
+	else:
+		print(self.name, ">Body: ", body)
 	collider = body
 	explode()
 
