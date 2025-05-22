@@ -42,7 +42,7 @@ process_material = SubResource("5")
 polygon = PackedVector2Array(-16, -8, 16, -8, 22, -6, 24, 0, 22, 6, 16, 8, -16, 8)
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionDetection"]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_y25gk")
 
 [node name="Area2D" type="Area2D" parent="."]
