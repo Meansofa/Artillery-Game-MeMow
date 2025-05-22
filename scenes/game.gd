@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var line = $Line2D
+
 
 var max_points = 50.0
 

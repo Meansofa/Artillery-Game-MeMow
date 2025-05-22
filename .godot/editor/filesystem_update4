@@ -1,1 +1,5 @@
 res://default_env.tres
+res://scenes/game.gd
+res://scenes/game.tscn
+res://theme/texture_overlay.gdshader
+res://scenes/player.tscn

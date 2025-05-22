@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://co71jpbjan0j1"]
+[gd_scene load_steps=17 format=3 uid="uid://co71jpbjan0j1"]
 
+[ext_resource type="PackedScene" uid="uid://cqcjl81heb4wl" path="res://scenes/bullet.tscn" id="1_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://ctk5fxj46grrv" path="res://Assets/Character Sprites/Rat Player/Idle_000.png" id="1_jej6c"]
 [ext_resource type="Texture2D" uid="uid://t1ljrmvq514o" path="res://Assets/Character Sprites/Rat Player/Idle_001.png" id="2_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://cnbu5x2kekpjn" path="res://Assets/Character Sprites/Rat Player/Idle_002.png" id="3_oprun"]
@@ -20,6 +21,9 @@ script/source = "extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+@export var bullet : PackedScene
+var bullet_velocity = 500
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -39,6 +43,16 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func _process(delta: float) -> void:
+	$RotPoint.look_at(get_global_mouse_position())
+	
+	if Input.is_action_just_pressed(\"shoot\"):
+		var b = bullet.instantiate()
+		get_parent().add_child(b)
+		b.transform = $RotPoint/ShootPoint.global_transform
+		b.velocity = b.transform.x * bullet_velocity
+		b.gravity = get_gravity().y
 "
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ke2ow"]
@@ -91,6 +105,7 @@ height = 36.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = SubResource("GDScript_jej6c")
+bullet = ExtResource("1_f1ej7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
