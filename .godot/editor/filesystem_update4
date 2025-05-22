@@ -1,4 +1,1 @@
 res://default_env.tres
-res://scripts/trajectory.gd
-res://scenes/player.tscn
-res://theme/texture_overlay.gdshader
