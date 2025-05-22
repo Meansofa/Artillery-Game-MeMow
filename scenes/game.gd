@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var line = $Line2D
 
-var max_points = 2000.0
+var max_points = 20.0
 
 func _ready() -> void:
 	pass
