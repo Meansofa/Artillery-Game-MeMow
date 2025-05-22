@@ -3,6 +3,9 @@ extends StaticBody2D
 var myPolygon2D : Polygon2D
 var myCollsionPolygon2D : CollisionPolygon2D
 
+var shader_texture := load("res://theme/texture_overlay.gdshader")
+var terrain_shader : Material = load("res://theme/terrain_texture_shader.tres")
+
 func _ready() -> void:
 	get_Polygons()
 
@@ -14,6 +17,7 @@ func get_Polygons() -> void:
 		if is_instance_of(child, CollisionPolygon2D):
 			print(self.name, ">CollisionPolygon2D created")
 			myCollsionPolygon2D = child
+			myCollsionPolygon2D.visible = false
 	if myPolygon2D != null and myCollsionPolygon2D != null:
 		myCollsionPolygon2D.set_deferred("polygon", myPolygon2D.polygon)
 	
@@ -41,6 +45,9 @@ func clip(poly):
 		var segment := Polygon2D.new() #Polygon2D(Texture) of Static Body
 		segment.polygon = res[1]
 		new_destructible.add_child(segment)
+		segment.material = terrain_shader
+
+		
 		
 		var segment_collision := CollisionPolygon2D.new() #CollisionPolygon2D of Static Body
 		segment_collision.set_deferred("polygon", res[1])

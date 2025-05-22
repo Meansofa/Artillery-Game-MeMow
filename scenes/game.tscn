@@ -1,17 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8fhoa28bjlqe"]
+[gd_scene load_steps=5 format=3 uid="uid://b8fhoa28bjlqe"]
 
 [ext_resource type="PackedScene" uid="uid://dtbgg7lgdjsqx" path="res://scenes/terrain.tscn" id="1"]
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://co71jpbjan0j1" path="res://scenes/player.tscn" id="2"]
 [ext_resource type="Script" uid="uid://7r7lr65160th" path="res://scenes/game.gd" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/worm.tscn" id="4"]
-
-[sub_resource type="Curve" id="1"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.69125, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="2"]
-offsets = PackedFloat32Array(0, 0.776316, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Environment" id="3"]
 background_mode = 4
@@ -31,75 +22,9 @@ script = ExtResource("3")
 [node name="Player" parent="." instance=ExtResource("2")]
 position = Vector2(20, -574)
 
-[node name="Line2D" type="Line2D" parent="."]
-width = 8.0
-width_curve = SubResource("1")
-gradient = SubResource("2")
-joint_mode = 2
-end_cap_mode = 2
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
-
-[node name="Worms" type="Node2D" parent="."]
-
-[node name="Worm" parent="Worms" instance=ExtResource("4")]
-position = Vector2(1514.53, 170.13)
-
-[node name="Worm2" parent="Worms" instance=ExtResource("4")]
-position = Vector2(1452.39, 156.662)
-
-[node name="Worm12" parent="Worms" instance=ExtResource("4")]
-position = Vector2(1379.1, 325.836)
-
-[node name="Worm13" parent="Worms" instance=ExtResource("4")]
-position = Vector2(1155.21, 467.714)
-
-[node name="Worm14" parent="Worms" instance=ExtResource("4")]
-position = Vector2(1256.93, 441.532)
-
-[node name="Worm15" parent="Worms" instance=ExtResource("4")]
-position = Vector2(1097.8, 476.77)
-
-[node name="Worm16" parent="Worms" instance=ExtResource("4")]
-position = Vector2(1222.42, 479.229)
-
-[node name="Worm3" parent="Worms" instance=ExtResource("4")]
-position = Vector2(1964.28, 36.6394)
-
-[node name="Worm17" parent="Worms" instance=ExtResource("4")]
-position = Vector2(1790.57, 473.656)
-
-[node name="Worm18" parent="Worms" instance=ExtResource("4")]
-position = Vector2(41.2708, 89.7366)
-
-[node name="Worm19" parent="Worms" instance=ExtResource("4")]
-position = Vector2(1846.42, 454.367)
-
-[node name="Worm4" parent="Worms" instance=ExtResource("4")]
-position = Vector2(869.82, 693.138)
-
-[node name="Worm5" parent="Worms" instance=ExtResource("4")]
-position = Vector2(946.702, 712.359)
-
-[node name="Worm6" parent="Worms" instance=ExtResource("4")]
-position = Vector2(334.886, 649.154)
-
-[node name="Worm7" parent="Worms" instance=ExtResource("4")]
-position = Vector2(998.95, 680.618)
-
-[node name="Worm8" parent="Worms" instance=ExtResource("4")]
-position = Vector2(1636.77, 644.395)
-
-[node name="Worm9" parent="Worms" instance=ExtResource("4")]
-position = Vector2(1546.1, 641.917)
-
-[node name="Worm10" parent="Worms" instance=ExtResource("4")]
-position = Vector2(1560.69, 124.584)
-
-[node name="Worm11" parent="Worms" instance=ExtResource("4")]
-position = Vector2(1315.78, 302.317)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("3")

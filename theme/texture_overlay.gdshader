@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform sampler2D overlay_tex : repeat_enable, filter_nearest;
+uniform sampler2D overlay_tex :filter_nearest;
 uniform vec2 overlay_tex_size = vec2(2800.0, 1080.0); // Set to actual image size
 varying vec2 world_position;
 

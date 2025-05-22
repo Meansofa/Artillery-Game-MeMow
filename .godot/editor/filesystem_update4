@@ -1,8 +1,4 @@
 res://default_env.tres
-res://scenes/terrain.tscn
+res://scripts/trajectory.gd
+res://scenes/player.tscn
 res://theme/texture_overlay.gdshader
-res://scenes/terrain.gd
-res://scenes/bullet.tscn
-res://scenes/bullet.gd
-res://scenes/game.gd
-res://scenes/destructible.gd
